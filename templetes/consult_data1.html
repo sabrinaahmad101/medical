@@ -1,0 +1,204 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+<!doctype html>
+<link rel="stylesheet" href="{% static 'consulted_data1.css' %}">
+
+
+
+
+
+<div class="topnav">
+  <div class="wrapper">  
+ <ul>
+ <li><h5>+880 1715 69334</h5> </li>
+ <li> <h5>wecare_org@gmail.com</h5></li>
+ {% if user.is_authenticated %}
+ <a> Hello, {{user.first_name}}</a>
+
+     
+ <a href="http://127.0.0.1:8000/accounts/logout">Logout</a>
+ {% else %}
+    
+   <a href="http://127.0.0.1:8000/accounts/login">Log-in</a>
+   <a href="http://127.0.0.1:8000/accounts/register">Sign-up</a>
+  
+   {% endif %}
+      
+     
+    
+ 
+
+ </ul>
+  </div>
+</div>
+
+
+<header>
+ 
+  <div class="border">
+    <div class="wrapper">
+        
+     <label class="logo">WeCarE</label>
+        <ul class="nav-area">
+            <li><a href="http://127.0.0.1:8000/searchinfo/home">Home</a></li>
+            <li><a href="http://127.0.0.1:8000/searchinfo/home#about">About</a></li>
+            
+            <div class="dropdown">
+             <li><li><a href="">Services</a></li></li>
+              <div class="dropdown-content">
+                <a href="http://127.0.0.1:8000/searchinfo/search">Search Hospitals</a>
+                <a href="http://127.0.0.1:8000/searchinfo/check_seat1">Check available seats</a>
+                <a href="http://127.0.0.1:8000/booking11">Booking</a>
+                <a href="http://127.0.0.1:8000/searchinfo/oxygensup">Oxygen supply</a>
+              </div>
+            </div>
+            <li><a href="http://127.0.0.1:8000/searchinfo/home#department">Department</a></li>
+  
+          
+             <li><a href="http://127.0.0.1:8000/searchinfo/home#news">News</a></li>
+            <li><a href="http://127.0.0.1:8000/consult">Appointment</a></li>
+            
+          
+            {% if user.is_authenticated %}
+           <li><a href="http://127.0.0.1:8000/profile" type="button" class="profile_btn"><i class="fa fa-user" ></i>Profile</a></li>
+           {% else %}
+          
+           <li><a href="http://127.0.0.1:8000/accounts/login" type="button" class="profile_btn"><i class="fa fa-user" ></i>Login</a></li>
+          {% endif %}
+       
+  
+            </ul>
+            
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section id="doctor">
+          <div class="wrap-doc">
+                <div class="col-right">
+                    <h1 class="section-title">Our<span> Qualified</span> Doctors</h1>
+                    <h2>In WeCarE</h2>
+                    <p> We are offering people to search emergency informations, buy medicines online and consult with doctors as well as book their ICU, seat and oxygen cylinder supply. Our only aim is service people in their desperate need for medical services!</p>
+                    
+                  </div> 
+                  
+                </div>
+            
+        
+                <div class="wrapper">
+                
+                  <div class="container">
+                  <div class="card_wrap">
+                  
+                  {% for doctor in doctors %}
+                    
+                    
+                    
+                    {% if user.is_authenticated %}
+                      {% if doctor.status %}
+                     
+                      <div class="card">
+                        
+                          <div class="doc_img">
+                            <img src="{{doctor.img.url}}">
+                          </div>
+                          <div class="card-text">
+                            
+                            <h2>{{doctor.name}}</h2>
+
+                            <span class="date">{{doctor.dept}}</span>
+                            <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
+                          </div>
+                          <div class="card-stats">
+                            <div class="stat">
+                             <div class=crd_btn><a href="{% url 'filter_doc' doctor.id %}" >Profile</a></div>
+                            </div>
+                            <div class="stat border">
+                              <div class=crd_btn><a href="https://meet.google.com/hqk-guca-khs">Video</a></div>
+                            </div>
+                            <div class="stat">
+                              <div class=crd_btn><a href="">Chat</a></div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      {% endif %}
+                    {% else %}
+                        <div class="card">
+                        
+                          <div class="doc_img">
+                            <img src="{{doctor.img.url}}">
+                          </div>
+                          <div class="card-text">
+                            <span class="date">{{doctor.dept}}</span>
+                            <h2>{{doctor.name}}</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
+                          </div>
+                          <div class="card-stats">
+                            <div class="stat">
+                             <div class=crd_btn><a href="{% url 'filter_doc' doctor.id %}" >Profile</a></div>
+                            </div>
+                            <div class="stat border">
+                              <div class=crd_btn><a href="{% url 'login' %}">Video</a></div>
+                            </div>
+                            <div class="stat">
+                              <div class=crd_btn><a href="{% url 'login' %}">Chat</a></div>
+                            </div>
+                          </div>
+                          
+                        </div>
+        
+                    {% endif %}
+                  {% endfor %}
+        
+                   
+                
+                  
+                  
+                  
+                  
+                  
+                      </div>
+                  
+                  </div>
+                  
+        
+        
+        
+        
+        
+        
+        
+               </div>
+        
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </section>

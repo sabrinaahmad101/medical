@@ -1,0 +1,74 @@
+
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+ <title>booking record</title>
+
+ <link rel="stylesheet" href="{% static 'list_admin.css' %}">
+
+</head>
+
+<body>
+
+
+  <div class="filter">
+    <h1>BOOKING RECORDS</h1>
+
+ </div>
+
+ <table >
+
+  
+
+ <tr>
+ 
+ <th>Hospital Name</th>
+
+ <th>Booking type</th>
+
+ <th>name</th>
+
+ <th>Email </th>
+
+ <th>Phone</th>
+
+ 
+
+
+
+ </tr>
+
+ 
+
+  <tr>
+  
+
+
+ 
+ {% for info in infos %}
+ 
+
+ <td>{{info.hospitsl_name}}</td>
+
+ <td>{{info.booking_type}}</td>
+
+ <td>{{info.name}}</td>
+
+ <td>{{info.email}}</td>
+
+ <td>{{info.phone_no}}</td>
+
+ </tr>
+ {% endfor %}
+
+
+ </body>
+
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Oxygen Supply</title>
+	<link href="{% static 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap' %}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'oxylist1.css' %}">
+	
+	
+    
+</head>
+
+
+ <body>
+	
+
+  <div class="filter">
+	{%  include 'nav.html' %}
+ </div>
+
+ <table >
+
+	<th class="s" colspan="4">Emergency Oxygen Supply</th>
+	<tr>
+		
+		<th> hospital name </th>
+		 <th> Area </th>
+		 <th> Contact no</th>
+
+	 </tr>
+
+	{% for info in infos %}
+	<tr>
+
+		<td>{{info.hospital_name}}</td>
+	   
+		<td>{{info.area}}</td>
+	   
+		<td>{{info.contact_no}}</td>
+	   
+		
+	   
+		</tr>
+
+		{% endfor %}
+	
+
+ </body>
+
+</html>

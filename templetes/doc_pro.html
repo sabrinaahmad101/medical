@@ -1,0 +1,133 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!doctype html>
+
+<link rel="stylesheet" href="{% static 'style_profile.css' %}">
+<link rel="stylesheet" href= "{% static 'nav.css' %}">
+<link rel="stylesheet" href="{% static 'nav.js' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+ 
+  <body>
+
+ 
+    <div class="wrapper1">
+        
+     <label class="logo">WeCarE</label>
+           <ul class="nav-area">
+               <li><a href="http://127.0.0.1:8000/searchinfo/home">Home</a></li>
+               <li><a href="http://127.0.0.1:8000/searchinfo/home#about">About</a></li>
+               
+               <div class="dropdown">
+                <li><li><a href="">Services</a></li></li>
+                 <div class="dropdown-content">
+                  <a href="http://127.0.0.1:8000/searchinfo/search">Search Hospitals</a>
+                  <a href="http://127.0.0.1:8000/searchinfo/check_seat1">Check available seats</a>
+                  <a href="http://127.0.0.1:8000/booking11">Booking</a>
+                  <a href="http://127.0.0.1:8000/searchinfo/oxygensup">Oxygen supply</a>
+                 </div>
+               </div>
+               <li><a href="http://127.0.0.1:8000/searchinfo/home#department">Department</a></li>
+   
+           
+          
+            
+            <li><a href="http://127.0.0.1:8000/consult">appointment</a></li>
+            {% if user.is_authenticated %}
+            
+         
+           <li><a href="http://127.0.0.1:8000/accounts/logout" type="button" class="profile_btn"><i class="fa fa-user" ></i>Log out</a></li>
+           {% else %}
+       
+          
+          <li><a href="http://127.0.0.1:8000/accounts/login" type="button" class="profile_btn"><i class="fa fa-login" ></i>Login</a></li>
+          {% endif %}
+       
+   
+       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+         <i class="fa fa-bars"></i>
+       </a>
+           
+            
+            </div>
+   
+
+     
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <header>
+    
+    <i class="fa fa-bars" aria-hidden="flase"></i>
+  </header>
+  <main>
+    <div class="row">
+      <div class="left col-lg-4">
+     
+        <div class="photo-left">
+       
+          <img class="photo" src="{{doctors.img.url}}">
+        </div>
+        
+        
+        <h4 class="name">{{doctors.name}}</h4>
+        <p class="info">{{doctors.dept}}</p>
+        <p class="info">{{doctors.email}}</p>
+        
+        
+
+        
+        
+       
+      </div>
+    </div>
+
+  <div class="wrap-grid">
+    
+
+    <div class="flex-container">
+      
+      <div class="pro_info"><h4>Name   :  </h4>{{doctors.name}}</div>
+      <div class="pro_info"><h4>Department       :  </h4>{{doctors.dept}}</div>  
+      <div class="pro_info"><h4>Hospital name   :  </h4>{{doctors.hospital}}</div>
+      <div class="pro_info"><h4>Degrees     :  </h4>{{doctors.qualification}}</div>
+      <div class="pro_info"><h4>status     :  </h4>Avaibale</div>  
+      
+    </div>
+
+  </div>
+   
+  
+ 
+  
+  </main>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+<!doctype html>
+<link rel="stylesheet" href={% static "consulted_data.css" %}>
+
+
+
+
+
+<div class="topnav">
+     <div class="wrapper">  
+    <ul>
+    <li><h5>+880 1715 69334</h5> </li>
+    <li> <h5>wecare_org@gmail.com</h5></li>
+        {% if user.is_authenticated %}
+          <li>Hello, {{user.username}}</li> 
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+         <a href="{% url 'login' %}">Log-in</a>
+         <a href="">Sign-up</a>
+        {% endif %}
+    
+
+    </ul>
+     </div>
+  </div>
+
+
+<header>
+    
+    <div class="border">
+    <div class="wrapper">
+        <div class="logo">
+            <img src="" alt="">
+        </div>
+     <label class="logo">WeCarE</label>
+        <ul class="nav-area">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Department</a></li>
+            <div class="dropdown">
+             <li><li><a href="">Services</a></li></li>
+              <div class="dropdown-content">
+                <a href="">Search hospitals</a>
+                <a href="#">oxygen cylinder</a>
+                <a href="#">Medicine</a>
+              </div>
+            </div>
+
+           
+          
+            
+            <li><a href="">appointment</a></li>
+            
+           {% if user.is_authenticated %}
+           <li><a href="{% url 'profile' %}" type="button" class="profile_btn"><i class="fa fa-user" ></i>Profile</a></li>
+        {% else %}
+          <!--<a href="{% url 'login' %}">Log-in</a> -->
+          <li><a href="{% url 'login' %}" type="button" class="profile_btn"><i class="fa fa-login" ></i>Login</a></li>
+       {% endif %}
+
+
+           <!-- <li><a href="#" type="button" class="profile_btn"><i class="fa fa-user" ></i>Profile</a></li> -->
+            <!-- <img src={% static "./images/user.png" %} class="user_icon"> -->
+            </ul>
+            
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="doctor">
+  <div class="wrap-doc">
+        <div class="col-right">
+            <h1 class="section-title">Our<span> Qualified</span> Doctors</h1>
+            <h2>In WeCarE</h2>
+            <p> We are offering people to search emergency informations, buy medicines online and consult with doctors as well as book their ICU, seat and oxygen cylinder supply. Our only aim is service people in their desperate need for medical services!</p>
+            
+          </div> 
+          
+        </div>
+    
+
+        <div class="wrapper">
+        
+          <div class="container">
+          <div class="card_wrap">
+          
+          {% for doctor in doctors %}
+            
+            
+            
+            {% if user.is_authenticated %}
+              {% if doctor.status %}
+             
+              <div class="card">
+                
+                  <div class="doc_img">
+                    <img src="{{doctor.img.url}}">
+                  </div>
+                  <div class="card-text">
+                    <span class="date">{{doctor.dept}}</span>
+                    <h2>{{doctor.name}}</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
+                  </div>
+                  <div class="card-stats">
+                    <div class="stat">
+                     <div class=crd_btn><a href="{% url 'filter_doc' doctor.id %}" >Profile</a></div>
+                    </div>
+                    <div class="stat border">
+                      <div class=crd_btn><a href="https://meet.google.com/hqk-guca-khs">Video</a></div>
+                    </div>
+                    <div class="stat">
+                      <div class=crd_btn><a href="{% url 'chat' %}">Chat</a></div>
+                    </div>
+                  </div>
+                  
+                </div>
+              {% endif %}
+            {% else %}
+                <div class="card">
+                
+                  <div class="doc_img">
+                    <img src="{{doctor.img.url}}">
+                  </div>
+                  <div class="card-text">
+                    <span class="date">{{doctor.dept}}</span>
+                    <h2>{{doctor.name}}</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor</p>
+                  </div>
+                  <div class="card-stats">
+                    <div class="stat">
+                     <div class=crd_btn><a href="{% url 'filter_doc' doctor.id %}" >Profile</a></div>
+                    </div>
+                    <div class="stat border">
+                      <div class=crd_btn><a href="{% url 'login' %}">Video</a></div>
+                    </div>
+                    <div class="stat">
+                      <div class=crd_btn><a href="{% url 'login' %}">Chat</a></div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+            {% endif %}
+          {% endfor %}
+
+           
+        
+          
+          
+          
+          
+          
+              </div>
+          
+          </div>
+          
+
+
+
+
+
+
+
+       </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
